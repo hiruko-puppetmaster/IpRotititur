@@ -1,0 +1,34 @@
+name: Build & Release KSU IP Rotator
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Create Module ZIP
+        run: |
+          mkdir -p build_zip
+          cp -r META-INF module.prop customize.sh action.sh README.md build_zip/
+          cd build_zip
+          zip -r ../ksu_ip_rotator.zip META-INF module.prop customize.sh action.sh README.md
+          cd ..
+
+      - name: Create GitHub Release & Upload ZIP
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ksu_ip_rotator.zip
+          name: Public IP Rotator ${{ github.ref_name }}
+          body: |
+            Automated flashable release for KernelSU-Next / APatch / Magisk.
+            Author: `hiruko-puppetmaster`
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
