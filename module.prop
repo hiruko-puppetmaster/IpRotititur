@@ -1,0 +1,6 @@
+id=ksu_ip_rotator
+name=Public IP Rotator (WG / Tor)
+version=v1.0.0
+versionCode=100
+author=hiruko-puppetmaster
+description=Randomly rotates your public IP on Wi-Fi via WireGuard configs or Tor ControlPort every time you tap the Action button.
