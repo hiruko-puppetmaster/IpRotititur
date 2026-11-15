@@ -32,7 +32,3 @@ jobs:
             Author: `hiruko-puppetmaster`
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-<<<<<<< HEAD
-=======
-          
->>>>>>> 3b364cf5938dc446b39fd87bbae004c5f6506dd3
